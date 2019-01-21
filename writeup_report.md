@@ -44,6 +44,10 @@ My model consists of a convolution neural network with 5x5 filter sizes and dept
 
 The model includes RELU layers to introduce nonlinearity , and the data is normalized in the model using a Keras lambda layer
 
+- Batch Size = 32. 
+- test_size=0.2
+-  epochs=3
+
 #### 2. Attempts to reduce overfitting in the model
 
 The model was trained and validated on different data sets to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
@@ -79,36 +83,33 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py function network()) consisted of a convolution neural network with the following layers and layer sizes ...
+The final model architecture (model.py function network()) consisted of a convolution neural network with the following layers and layer sizes 
 
-
-
-Layer (type)                 Output Shape              Param #   
-=================================================================
-lambda_1 (Lambda)            (None, 160, 320, 3)       0         
+Layer						|     Output Shape          |  Param _________________________________________________________________
+lambda_1 (Lambda)   		|    (None, 160, 320, 3) 	|  0         
 _________________________________________________________________
-cropping2d_1 (Cropping2D)    (None, 65, 320, 3)        0         
+cropping2d_1 (Cropping2D)   | 	(None, 65, 320, 3)      |  0         
 _________________________________________________________________
-conv2d_1 (Conv2D)            (None, 33, 160, 24)       1824      
+conv2d_1 (Conv2D)           |	(None, 33, 160, 24)     |  1824      
 _________________________________________________________________
-conv2d_2 (Conv2D)            (None, 17, 80, 36)        21636     
+conv2d_2 (Conv2D)           | (None, 17, 80, 36)        | 21636     
 _________________________________________________________________
-conv2d_3 (Conv2D)            (None, 9, 40, 48)         43248     
+conv2d_3 (Conv2D)           | (None, 9, 40, 48)         | 43248     
 _________________________________________________________________
-conv2d_4 (Conv2D)            (None, 7, 38, 64)         27712     
+conv2d_4 (Conv2D)           | (None, 7, 38, 64)         | 27712     
 _________________________________________________________________
-conv2d_5 (Conv2D)            (None, 5, 36, 64)         36928     
+conv2d_5 (Conv2D)           | (None, 5, 36, 64)         | 36928     
 _________________________________________________________________
-flatten_1 (Flatten)          (None, 11520)             0         
+flatten_1 (Flatten)         | (None, 11520)             | 0         
 _________________________________________________________________
-dense_1 (Dense)              (None, 100)               1152100   
+dense_1 (Dense)             | (None, 100)               | 1152100   
 _________________________________________________________________
-dense_2 (Dense)              (None, 50)                5050      
+dense_2 (Dense)             | (None, 50)                | 5050      
 _________________________________________________________________
-dense_3 (Dense)              (None, 10)                510       
+dense_3 (Dense)             | (None, 10)                | 510       
 _________________________________________________________________
-dense_4 (Dense)              (None, 1)                 11        
-=================================================================
+dense_4 (Dense)             | (None, 1)                 | 11 
+_________________________________________________________________
 Total params: 1,289,019
 Trainable params: 1,289,019
 Non-trainable params: 0
