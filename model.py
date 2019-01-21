@@ -79,25 +79,22 @@ def network(image_shape,train_generator , validation_generator,train_samples,val
     model = Sequential()
     # Mean centering and Normaization.
     #ch, row, col = 3, 80, 320  # Trimmed image format
-    model.add(Lambda(lambda x: ((x  / 255.0) - 0.5 ),input_shape=image_shape ))
+    model.add(Lambda(lambda x: ((x  / 127.0) - 1.0 ),input_shape=image_shape ))
     model.add(Cropping2D(cropping=((70 , 25) , (0,0))))
     model.add(Conv2D(24,(5,5) ,strides=(2,2) , padding="same", activation = "relu"))
-    #model.add(MaxPooling2D())
     model.add(Conv2D(36,(5,5) ,strides=(2,2) , padding="same" , activation = "relu"))
     model.add(Conv2D(48,(5,5),strides=(2,2) , padding="same", activation = "relu"))
     model.add(Conv2D(64,(3,3), activation = "relu"))
     model.add(Conv2D(64,(3,3),activation = "relu"))
-    #model.add(MaxPooling2D())
     model.add(Flatten())
     model.add(Dense(100))
-    model.add(Dropout(0.2))
-
+    #model.add(Dropout(0.2))
     model.add(Dense(50))
     model.add(Dense(10))
     model.add(Dense(1))
     model.compile(loss="mse", optimizer="adam")
     #model.fit(X_train , y_train,validation_split=0.2,shuffle=True,nb_epoch=5)
-    model.fit_generator(train_generator, steps_per_epoch= len(train_samples),validation_data=validation_generator, validation_steps=len(validation_samples), epochs=1, verbose = 1)
+    model.fit_generator(train_generator, steps_per_epoch= len(train_samples),validation_data=validation_generator, validation_steps=len(validation_samples), epochs=3, verbose = 1)
 
     model.summary()
     model.save("model.h5")
@@ -133,7 +130,7 @@ def generator(samples, batch_size=32):
                 ang = float(batch_sample[3])
 
                 #crop_img = img[top:img.shape[0] - bottom,:]
-                #img = change_img_brigtness(img)
+                img = change_img_brigtness(img)
                 images.append(img)
                 angles.append(ang)
 
@@ -151,7 +148,7 @@ if  __name__ == "__main__":
     # TRAINING
     lines = read_csv(FILE_PATH)
     print("lenth of lines" , len(lines))
-    #print(lines[6000])
+    print(lines[4000])
     img = read_sample_image(lines[1])
     img_shape = img.shape # (160, 320, 3)
     #print(img_shape)
@@ -182,5 +179,4 @@ if  __name__ == "__main__":
 
 
     
-    
-    
+   
