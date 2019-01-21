@@ -60,6 +60,7 @@ def augment_set(X, y):
     X_train = np.array(aug_img)
     y_train = np.array(aug_angle)
     return X_train , y_train
+
 def read_sample_image(line_paths):
     """Read Sample Images - For testing purpose only """
     #for line in line_paths:
@@ -75,7 +76,7 @@ def read_sample_image(line_paths):
 
 
 def network(image_shape,train_generator , validation_generator,train_samples,validation_samples):
-    " " " Network to train model Model.h5 " " "
+    " " " Network to train model Model.h5 using nvidia model" " "
     model = Sequential()
     # Mean centering and Normaization.
     #ch, row, col = 3, 80, 320  # Trimmed image format
@@ -102,6 +103,7 @@ def network(image_shape,train_generator , validation_generator,train_samples,val
     
 
 def change_img_brigtness(image):
+    """ Change Brightness of Images"""
     hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
     bias = 0.25
     bright = bias + np.random.uniform()
