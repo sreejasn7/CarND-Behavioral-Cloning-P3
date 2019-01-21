@@ -99,9 +99,9 @@ dense_3 (Dense)             | (None, 10)                | 510     |
 dense_4 (Dense)             | (None, 1)                 | 11 	  |
 _________________________________________________________________
 
-|Total params: 1,289,019										|
-|Trainable params: 1,289,019									|
-|Non-trainable params: 0										|
+ - Total params: 1,289,019										
+ - Trainable params: 1,289,019									
+ - Non-trainable params: 0										
 
 
 #### 3. Creation of the Training Set & Training Process
