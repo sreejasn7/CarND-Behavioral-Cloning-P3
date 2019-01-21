@@ -60,8 +60,6 @@ The model used an adam optimizer, so the learning rate was not tuned manually . 
 
 Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ... 
 
-For details about how I created the training data, see the next section. 
-
 ### Model Architecture and Training Strategy
 #### 1. Preprocessing
 - Used all the set of random left , center and right images. 
@@ -85,7 +83,8 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 The final model architecture (model.py function network()) consisted of a convolution neural network with the following layers and layer sizes 
 
-Layer						|     Output Shape          |  Param _________________________________________________________________
+Layer						|     Output Shape          |  Param 
+_________________________________________________________________
 lambda_1 (Lambda)   		|    (None, 160, 320, 3) 	|  0         
 _________________________________________________________________
 cropping2d_1 (Cropping2D)   | 	(None, 65, 320, 3)      |  0         
